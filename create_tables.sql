@@ -1,0 +1,6 @@
+CREATE DATABASE online_fraud;
+
+
+CREATE SCHEMA IF NOT EXISTS datamart
+    AUTHORIZATION root;
+
