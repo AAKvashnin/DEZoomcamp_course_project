@@ -1,4 +1,4 @@
-# pyspark --packages org.postgresql:postgresql:42.6.0
+# pyspark --packages org.postgresql:postgresql:42.6.0 --driver-memory 4G --executor-memory 4G --num-executors 2
 
 import pyspark.sql.functions as F
 
@@ -13,5 +13,5 @@ datamart_df=df.groupBy(F.col("step"),F.col("type"),F.col("isfraud")).agg(F.sum(F
                                                                          )
 
 datamart_df.write.mode("overwrite").format("jdbc").option("url","jdbc:postgresql:online_fraud").\
-            option("dbtable","datamart.agg_transaction").option("user","root").\
+            option("dbtable","datamart.agg_trans").option("user","root").\
             option("password","root").option("driver", "org.postgresql.Driver").option("truncate","true").save()
