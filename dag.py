@@ -36,7 +36,7 @@ with DAG(dag_id='dag',
    load_datalake = PythonOperator(
            task_id='load_datalake',
            python_callable=write_cloud,
-           op_kwards={
+           op_kwargs={
                 'dwpath': '/tmp',
                 'filename':'onlinefraud.csv',
                 'bucket':'dtc-data-lake'}
