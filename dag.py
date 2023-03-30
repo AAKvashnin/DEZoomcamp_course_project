@@ -1,6 +1,7 @@
 from airflow import DAG
 from airflow.utils.dates import days_ago
 from airflow.operators.python_operator import PythonOperator
+from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 import kaggle
 from pathlib import Path
 import boto3
@@ -42,4 +43,10 @@ with DAG(dag_id='dag',
                 'bucket':'dtc-data-lake'}
        )
 
-   extract_data >> load_datalake
+   load_dwh=SparkSubmitOperator(
+           application='./load_dwh_pyspark.py'
+           task_id='load_dwh'
+           conn_id='spark_local'
+       )
+
+   extract_data >> load_datalake >> load_dwh
