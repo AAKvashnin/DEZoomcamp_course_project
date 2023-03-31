@@ -44,8 +44,8 @@ with DAG(dag_id='dag',
        )
 
    load_dwh=SparkSubmitOperator(
-           application='./load_dwh_pyspark.py'
-           task_id='load_dwh'
+           application='./load_dwh_pyspark.py',
+           task_id='load_dwh',
            conn_id='spark_local'
        )
 
