@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.utils.dates import days_ago
 from airflow.operators.python_operator import PythonOperator
-from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
+from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
 import kaggle
 from pathlib import Path
 import boto3
