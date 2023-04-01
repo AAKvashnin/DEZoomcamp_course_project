@@ -10,26 +10,29 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_DB=airflow
+    volumes:
+      - ./pgscript:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
     restart: always
 
-  # Airflow в отдельном контейнере
+  # Airflow
   airflow:
     platform: linux/amd64
-    # Сборка из Dockerfile
+    # build
     build: .
     restart: always
-    # Определчет порядок запуска сервисов
     depends_on:
       - postgres
-    # Airflow поддерживает конфигурирование переменных из конфиг файла
+    # Airflow config
     # https://airflow.apache.org/docs/apache-airflow/stable/howto/set-config.html
     environment:
-      - AIRFLOW__CORE__FERNET_KEY=HXJmviZ45J6R0bM1DFFij0JJ1ca_JMDWo9Z-Q-wqsFk= # Для шифрования подключений
+      - AIRFLOW__CORE__FERNET_KEY=HXJmviZ45J6R0bM1DFFij0JJ1ca_JMDWo9Z-Q-wqsFk=
       - AIRFLOW__WEBSERVER__SECRET_KEY=b27dfe9846d048294adc0df96ad43239fa325db739a0a69a60672e3e6272
     # Пробрасываем порты
     ports:
       - 8001:8080
-    # Пробрасываем папку с дагами
+    # dags and secrets
     volumes:
       - ./airflow/dags:/usr/local/airflow/dags
       - ./.kaggle:/root/.kaggle

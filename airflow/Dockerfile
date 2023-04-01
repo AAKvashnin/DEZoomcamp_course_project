@@ -58,6 +58,12 @@ RUN cd "/tmp" && \
 RUN export SPARK_HOME
 ENV PATH $PATH:/usr/local/spark/bin
 
+#Install s3fs
+apt install s3fs
+
+#Mount s3
+#s3fs dtc-data-lake /zoomcamp/zoomcamp/datalake -o passwd_file=$HOME/.passwd-s3fs -o url=https://storage.yandexcloud.net
+
 
 # Run script
 ENTRYPOINT ["/project/scripts/init.sh"]
