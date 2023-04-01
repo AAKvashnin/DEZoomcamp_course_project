@@ -1,11 +1,14 @@
 CREATE DATABASE online_fraud;
 
+\c online_fraud
+
 CREATE SCHEMA IF NOT EXISTS dwh
  AUTHORIZATION root;
 
 
 CREATE SCHEMA IF NOT EXISTS datamart
     AUTHORIZATION root;
+
 
 CREATE TABLE dwh.online_transaction(step int not null,
                                          type varchar(10) not null,
