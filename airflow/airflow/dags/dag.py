@@ -49,4 +49,4 @@ with DAG(dag_id='dag',
            conn_id='spark_local'
        )
 
-   extract_data >> load_datalake >> load_dwh
+   extract_data >> load_datalake
