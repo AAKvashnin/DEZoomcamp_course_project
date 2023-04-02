@@ -3,11 +3,11 @@ CREATE DATABASE online_fraud;
 \c online_fraud
 
 CREATE SCHEMA IF NOT EXISTS dwh
- AUTHORIZATION root;
+ AUTHORIZATION postgres;
 
 
 CREATE SCHEMA IF NOT EXISTS datamart
-    AUTHORIZATION root;
+    AUTHORIZATION postgres;
 
 
 CREATE TABLE dwh.online_transaction(step int not null,
