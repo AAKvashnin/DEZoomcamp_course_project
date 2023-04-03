@@ -37,3 +37,4 @@ services:
       - ./airflow/dags:/usr/local/airflow/dags
       - ./.kaggle:/root/.kaggle
       - ./.aws:/root/.aws
+      - ./mount/datalake:/datalake
