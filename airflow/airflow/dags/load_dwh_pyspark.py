@@ -1,13 +1,10 @@
-# s3fs dtc-data-lake /zoomcamp/zoomcamp/datalake -o passwd_file=$HOME/.passwd-s3fs -o url=https://storage.yandexcloud.net
-# pyspark --packages org.postgresql:postgresql:42.6.0
-
 import pyspark.sql.functions as F
 from  pyspark.sql.types import IntegerType
 from  pyspark.sql.types import DecimalType
 from  pyspark.sql import SaveMode
 
 
-df=spark.read.csv("/zoomcamp/zoomcamp/datalake/onlinefraud.csv",header=True)
+df=spark.read.csv("/datalake/onlinefraud.csv",header=True)
 
 dwh_df=df.select(F.col("step").cast(IntegerType()).alias("step"), F.col("type"), \
                  F.col("amount").cast(DecimalType(20,2)), F.col("nameOrig"),\

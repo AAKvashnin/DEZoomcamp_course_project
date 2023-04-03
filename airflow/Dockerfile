@@ -7,6 +7,7 @@ ARG AIRFLOW_USER_HOME=/usr/local/airflow
 ENV AIRFLOW_HOME=${AIRFLOW_USER_HOME}
 ARG SPARK_VERSION="3.1.2"
 ARG HADOOP_VERSION="3.2"
+ARG BUCKET_NAME="dtc-data-lake"
 
 # Build airflow
 RUN pip install apache-airflow[postgres]==${AIRFLOW_VERSION}
@@ -61,8 +62,12 @@ ENV PATH $PATH:/usr/local/spark/bin
 #Install s3fs
 RUN apt-get install -y s3fs
 
+#Create mount point and copy secret
+RUN mkdir /datalake
+COPY .s3fs/passwd-s3fs ${AIRFLOW_HOME}/.passwd-s3fs
+
 #Mount s3
-#s3fs dtc-data-lake /zoomcamp/zoomcamp/datalake -o passwd_file=$HOME/.passwd-s3fs -o url=https://storage.yandexcloud.net
+s3fs ${BUCKET_NAME} /datalake -o passwd_file=${AIRFLOW_HOME}/.passwd-s3fs -o url=https://storage.yandexcloud.net
 
 
 # Run script
