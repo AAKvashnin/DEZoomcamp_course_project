@@ -44,10 +44,10 @@ with DAG(dag_id='dag',
        )
 
    load_dwh=SparkSubmitOperator(
-           application='./load_dwh_pyspark.py',
+           application='/usr/local/airflow/dags/load_dwh_pyspark.py',
            task_id='load_dwh',
            conn_id='spark_local',
            packages='org.postgresql:postgresql:42.6.0'
        )
 
-   extract_data >> load_datalake
+   extract_data >> load_datalake >> load_dwh
