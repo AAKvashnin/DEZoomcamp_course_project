@@ -1,7 +1,7 @@
 import pyspark.sql.functions as F
 from  pyspark.sql.types import IntegerType
 from  pyspark.sql.types import DecimalType
-from pyspark import SparkSession
+from pyspark.sql import SparkSession
 
 
 spark=SparkSession.builder.appName('Load DWH').getOrCreate()
