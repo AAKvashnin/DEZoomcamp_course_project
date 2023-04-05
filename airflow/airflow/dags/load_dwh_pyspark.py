@@ -4,7 +4,7 @@ from  pyspark.sql.types import DecimalType
 from pyspark import SparkSession
 
 
-spark=SparkSession.builder.appname('Load DWH').getOrCreate()
+spark=SparkSession.builder.appName('Load DWH').getOrCreate()
 
 df=spark.read.csv("/datalake/onlinefraud.csv",header=True)
 
