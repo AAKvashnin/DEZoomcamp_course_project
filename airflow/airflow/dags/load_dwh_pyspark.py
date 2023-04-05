@@ -1,7 +1,6 @@
 import pyspark.sql.functions as F
 from  pyspark.sql.types import IntegerType
 from  pyspark.sql.types import DecimalType
-from  pyspark.sql import SaveMode
 
 
 df=spark.read.csv("/datalake/onlinefraud.csv",header=True)
