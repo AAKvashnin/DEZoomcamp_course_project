@@ -16,6 +16,6 @@ dwh_df=df.select(F.col("step").cast(IntegerType()).alias("step"), F.col("type"),
 
 
 
-dwh_df.write.mode("append").format("jdbc").option("url","jdbc:postgresql:online_fraud").\
+dwh_df.write.mode("append").format("jdbc").option("url","jdbc:postgresql://airflow_postgres_1/online_fraud").\
             option("dbtable","dwh.online_transaction").option("user","root").\
             option("password","root").option("driver", "org.postgresql.Driver").option("truncate","false").save()
