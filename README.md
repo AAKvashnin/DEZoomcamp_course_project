@@ -16,7 +16,7 @@ Scripts:
  airflow/dags - airflow dag and pySpark applications
 
 Instructions to deploy:
-1) Deploy cloud infrastructure - bucket + virtual machine
+1) Deploy cloud infrastructure - bucket + compute virtual machine
 2) Start virtual machine, connect via ssh
 3) git clone https://github.com/AAKvashnin/DEZoomcamp_course_project
 4) Configure secrets (.s3fs, .kaggle, .aws)
@@ -26,5 +26,5 @@ s3fs dtc-data-lake /zoomcamp/zoomcamp/datalake -o passwd_file=$HOME/.passwd-s3fs
 7) Build & start docker (docker-compose build --no-cache && docker-compose up)
 8) Wait docker to start
 9) Connect airflow and configure spark_local Connection
-10) Connect airflow and start dag, wait until its completion
-11) Open Data Lens and see the results
+10) Connect airflow and start dag, wait until its completion (port 8081 of virtual machine)
+11) Open Data Lens and see the results ()
