@@ -37,4 +37,4 @@ services:
       - ./airflow/dags:/usr/local/airflow/dags
       - ./.kaggle:/root/.kaggle
       - ./.aws:/root/.aws
-      - /Users/alexeykvashnin/datalake:/datalake
+      - /home/alexeykvashnin/datalake:/datalake

@@ -19,10 +19,10 @@ Instructions to deploy:
 1) Deploy cloud infrastructure - bucket + compute virtual machine
 2) Start virtual machine, connect via ssh
 3) git clone https://github.com/AAKvashnin/DEZoomcamp_course_project
-4) Configure secrets (.s3fs, .kaggle, .aws)
+4) Configure secrets ($HOME/.passwd-s3fs  .kaggle/kaggle.json, .aws/config, .aws/credentials)
 5) Inside virtual machine install s3fs (apt-get install s3fs)
 6) Mount s3fs folder
-s3fs dtc-data-lake /zoomcamp/zoomcamp/datalake -o passwd_file=$HOME/.passwd-s3fs -o url=https://storage.yandexcloud.net
+s3fs dtc-data-lake ${HOME}/datalake -o passwd_file=$HOME/.passwd-s3fs -o url=https://storage.yandexcloud.net
 7) Build & start docker (docker-compose build --no-cache && docker-compose up)
 8) Wait docker to start
 9) Connect airflow and configure spark_local Connection
