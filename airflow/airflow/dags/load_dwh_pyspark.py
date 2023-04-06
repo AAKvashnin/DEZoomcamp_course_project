@@ -6,7 +6,7 @@ from pyspark.sql import SparkSession
 
 spark=SparkSession.builder.appName('Load DWH').getOrCreate()
 
-df=spark.read.csv("/datalake/onlinefraud.csv",header=True)
+df=spark.read.csv("/datalake/tmp/onlinefraud.csv",header=True)
 
 dwh_df=df.select(F.col("step").cast(IntegerType()).alias("step"), F.col("type"), \
                  F.col("amount").cast(DecimalType(20,2)), F.col("nameOrig"),\

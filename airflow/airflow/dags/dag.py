@@ -50,4 +50,11 @@ with DAG(dag_id='dag',
            packages='org.postgresql:postgresql:42.6.0'
        )
 
-   extract_data >> load_datalake >> load_dwh
+   load_datamart=SparkSubmitOperator(
+              application='/usr/local/airflow/dags/load_datamart_pyspark.py',
+              task_id='load_datamart',
+              conn_id='spark_local',
+              packages='org.postgresql:postgresql:42.6.0'
+          )
+
+   extract_data >> load_datalake >> load_dwh >> load_datamart

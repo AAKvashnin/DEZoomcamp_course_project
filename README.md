@@ -21,10 +21,10 @@ Instructions to deploy:
 3) git clone https://github.com/AAKvashnin/DEZoomcamp_course_project
 4) Configure secrets ($HOME/.passwd-s3fs  .kaggle/kaggle.json, .aws/config, .aws/credentials)
 5) Inside virtual machine install s3fs (apt-get install s3fs)
-6) Mount s3fs folder
-s3fs dtc-data-lake ${HOME}/datalake -o passwd_file=$HOME/.passwd-s3fs -o url=https://storage.yandexcloud.net
-7) Build & start docker (docker-compose build --no-cache && docker-compose up)
-8) Wait docker to start
+6) Build & start docker (docker-compose build --no-cache && docker-compose up)
+7) Wait docker to start
+8) Mount s3fs folder
+sudo s3fs dtc-data-lake ${HOME}/datalake -o passwd_file=$HOME/.passwd-s3fs -o url=https://storage.yandexcloud.net
 9) Connect airflow and configure spark_local Connection
 10) Connect airflow and start dag, wait until its completion (port 8081 of virtual machine)
 11) Open Data Lens and see the results ()
