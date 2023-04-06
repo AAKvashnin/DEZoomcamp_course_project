@@ -16,7 +16,7 @@ RUN pip install wtforms==2.3.3
 RUN pip install kaggle
 RUN pip install boto3
 RUN pip install pathlib
-RUN pip install pyspark
+RUN pip install pyspark==${SPARK_VERSION}
 
 # Make directory for dags
 RUN mkdir /project
