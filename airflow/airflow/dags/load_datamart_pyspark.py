@@ -4,8 +4,10 @@ from  pyspark.sql.types import IntegerType
 from  pyspark.sql.types import DecimalType
 from pyspark.sql import SparkSession
 
+spark=SparkSession.builder.appName('Load Datamart').getOrCreate()
 
-df=spark.read.format("jdbc").option("url","jdbc:postgresql:online_fraud").\
+
+df=spark.read.format("jdbc").option("url","jdbc:postgresql://airflow_postgres_1/online_fraud").\
                                          option("dbtable","dwh.online_transaction").option("user","root").\
                                          option("password","root").option("driver", "org.postgresql.Driver").load()
 
