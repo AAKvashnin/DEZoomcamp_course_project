@@ -47,7 +47,7 @@ with DAG(dag_id='dag',
            application='/usr/local/airflow/dags/load_dwh_pyspark.py',
            task_id='load_dwh',
            conn_id='spark_local',
-           packages='org.postgresql:postgresql:42.6.0'
+           packages='org.postgresql:postgresql:42.6.0,org.apache.hadoop:hadoop-aws:3.2.4'
        )
 
    load_datamart=SparkSubmitOperator(

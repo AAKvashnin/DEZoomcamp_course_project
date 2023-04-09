@@ -6,7 +6,15 @@ from pyspark.sql import SparkSession
 
 spark=SparkSession.builder.appName('Load DWH').getOrCreate()
 
-df=spark.read.csv("/datalake/tmp/onlinefraud.csv",header=True)
+sc=spark.sparkContext
+
+sc._jsc.hadoopConfiguration().set("fs.s3a.access.key",  os.environ.get("AWS_ACCESS_KEY_ID"))
+sc._jsc.hadoopConfiguration().set("fs.s3a.secret.key", os.environ.get("AWS_SECRET_ACCESS_KEY"))
+sc._jsc.hadoopConfiguration().set("fs.s3a.signing-algorithm","")
+sc._jsc.hadoopConfiguration().set("fs.s3a.endpoint","storage.yandexcloud.net")
+sc._jsc.hadoopConfiguration().set("fs.s3a.aws.credentials.provider","org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
+
+df=spark.read.csv("s3a://dtc-data-lake/tmp/onlinefraud.csv",header=True)
 
 dwh_df=df.select(F.col("step").cast(IntegerType()).alias("step"), F.col("type"), \
                  F.col("amount").cast(DecimalType(20,2)), F.col("nameOrig"),\
