@@ -2,6 +2,7 @@ import pyspark.sql.functions as F
 from  pyspark.sql.types import IntegerType
 from  pyspark.sql.types import DecimalType
 from pyspark.sql import SparkSession
+import os
 
 
 spark=SparkSession.builder.appName('Load DWH').getOrCreate()
