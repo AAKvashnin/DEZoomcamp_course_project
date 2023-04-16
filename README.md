@@ -27,4 +27,4 @@ Instructions to deploy:
 sudo s3fs dtc-data-lake ${HOME}/datalake -o passwd_file=$HOME/.passwd-s3fs -o url=https://storage.yandexcloud.net
 9) Connect airflow and configure spark_local Connection
 10) Connect airflow and start dag, wait until its completion (port 8081 of virtual machine)
-11) Open Data Lens and see the results (https://datalens.yandex.ru/v3evzwmnhuyil-onlinefraud)
+11) Open Data Lens and see the results (https://datalens.yandex/v3evzwmnhuyil)
